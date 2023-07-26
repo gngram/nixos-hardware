@@ -9,7 +9,14 @@
     ./modules.nix
   ];
 
-  hardware.deviceTree = {
-    name = "microchip/mpfs-icicle-kit.dtb";
+  hardware = {
+    deviceTree.name = "microchip/mpfs-icicle-kit.dtb";
+    firmware = [
+      (pkgs.callPackage ./firmwares/ath10k.nix {})
+    ];
   };
+
+  boot.extraModprobeConfig = lib.mkDefault ''
+      options ath10k_core skip_otp=Y
+    '';
 }

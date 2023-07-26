@@ -3,14 +3,14 @@
 RC_CORE n
 
 # Disable USB media drivers (video/audio)
-MEDIA_USB_SUPPORT n
+# MEDIA_USB_SUPPORT n
 
 # Disable TV decoder/tuner support
 MEDIA_DIGITAL_TV_SUPPORT n
 MEDIA_ANALOG_TV_SUPPORT n
 
 # Disable any unnecessary media drivers (TV, radio, IR etc.)
-MEDIA_SUPPORT_FILTER y
+MEDIA_SUPPORT_FILTER n
 
 # Disable CDROM support
 CDROM n

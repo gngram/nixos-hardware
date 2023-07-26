@@ -4,4 +4,7 @@
     initrd.includeDefaultModules = lib.mkForce false;
   };
 
+  hardware.firmware = [
+   pkgs.ath10k-firmware
+  ];
 }
