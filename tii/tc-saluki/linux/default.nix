@@ -19,7 +19,12 @@ buildLinux (args // rec {
   ];
 
   autoModules = false;
-  extraConfig = prune + hardened + docker + mesh + media + nixos;
+  #extraConfig = prune + hardened + docker + mesh + media + nixos;
+  extraConfig = prune + hardened + docker + mesh + media + nixos +
+  ''
+  EXTRA_FIRMWARE "ath10k/QCA6174/hw3.0/board-2.bin ath10k/QCA6174/hw3.0/firmware-6.bin ath10k/QCA988X/hw2.0/board.bin ath10k/QCA988X/hw2.0/firmware-4.bin ath10k/QCA988X/hw2.0/firmware-5.bin regulatory.db regulatory.db.p7s"
+  EXTRA_FIRMWARE_DIR "${pkgs.ath10k-firmware}/lib/firmware"
+  '';
 
   src = fetchGit {
     url = "ssh://git@github.com/tiiuae/tc_linux.git";
