@@ -16,14 +16,14 @@
 let
   ubsrc = fetchgit {
     url = "https://github.com/nxp-imx/uboot-imx.git";
-    # tag: "lf-6.1.55-2.2.0"
-    rev = "49b102d98881fc28af6e0a8af5ea2186c1d90a5f";
-    sha256 = "sha256-1j6X82DqezEizeWoSS600XKPNwrQ4yT0vZuUImKAVVA=";
+    # tag: lf-6.12.20-2.0.0
+    rev = "9383f8387dc76524524da69992db96c22195a57c";
+    sha256 = "";
   };
 in
 (stdenv.mkDerivation {
   pname = "imx8mp-uboot";
-  version = "2023.04";
+  version = "2025.04";
   src = ubsrc;
 
   postPatch = ''

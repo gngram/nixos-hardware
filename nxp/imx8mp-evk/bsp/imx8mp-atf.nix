@@ -13,14 +13,14 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "imx8mp-atf";
-  version = "lf6.1.55_2.2.0";
+  version = "lf-6.12.20-2.0.0";
   platform = target-board;
   enableParallelBuilding = true;
 
   src = fetchgit {
     url = "https://github.com/nxp-imx/imx-atf.git";
-    rev = "08e9d4eef2262c0dd072b4325e8919e06d349e02";
-    sha256 = "sha256-96EddJXlFEkP/LIGVgNBvUP4IDI3BbDE/c9Yub22gnc=";
+    rev = "6ddd57019494cabfca5065368349109c37f2cc9f";
+    sha256 = "sha256-8+5kV6wHhwMYVA9aqn4fNRhvgOLsU9RlX3UL7edMM+A=";
   };
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
