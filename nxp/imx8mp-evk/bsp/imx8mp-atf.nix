@@ -1,12 +1,13 @@
 {
-  lib,
   pkgs,
-  buildArmTrustedFirmware,
+  lib,
   fetchgit,
+  buildArmTrustedFirmware,
   enable-tee ? true,
 }:
 with pkgs; let
   target-board = "imx8mp";
+  opteedflag = if enable-tee then "SPD=opteed" else "";
 in
   buildArmTrustedFirmware rec {
     pname = "imx8mp-atf";
@@ -14,17 +15,21 @@ in
     enableParallelBuilding = true;
     extraMeta.platforms = ["aarch64-linux"];
 
-  src = fetchgit {
-    url = "https://github.com/nxp-imx/imx-atf.git";
-    rev = "6ddd57019494cabfca5065368349109c37f2cc9f";
-    sha256 = "sha256-8+5kV6wHhwMYVA9aqn4fNRhvgOLsU9RlX3UL7edMM+A=";
-  };
-#(lib.optional (lib.versionAtLeast pkgs.binutils.version "2.39") "LDFLAGS=--no-warn-rwx-segments")
-    extraMakeFlags = lib.concatLists [
-      ["PLAT=${platform}" "IMX_BOOT_UART_BASE=0x30890000" "bl31" "SPD=opteed"]
+    src = fetchgit {
+      url = "https://github.com/nxp-imx/imx-atf.git";
+      rev = "6ddd57019494cabfca5065368349109c37f2cc9f";
+      sha256 = "sha256-8+5kV6wHhwMYVA9aqn4fNRhvgOLsU9RlX3UL7edMM+A=";
+    };
+
+    extraMakeFlags = [
+      "PLAT=${platform}" 
+      "bl31" 
+      "${opteedflag}"
     ];
 
-    filesToInstall = ["build/${target-board}/release/bl31.bin"];
+    filesToInstall = [
+      "build/${target-board}/release/bl31.bin"
+    ];
     
     
   meta = with lib; {

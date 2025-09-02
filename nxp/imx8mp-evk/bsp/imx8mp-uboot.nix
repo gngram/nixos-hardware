@@ -83,7 +83,7 @@ in
     mkdir -p $out
     cp ./u-boot-nodtb.bin $out
     cp ./spl/u-boot-spl.bin $out
-    cp ./arch/arm/dts/imx8mp-evk.dtb $out
+    cp ./dts/upstream/src/arm64/freescale/imx8mp-evk.dtb $out
     cp .config  $out
 
     runHook postInstall
