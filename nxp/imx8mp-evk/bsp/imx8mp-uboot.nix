@@ -12,13 +12,14 @@
   which,
   perl,
   buildPackages,
+  efitools,
 }:
 let
   ubsrc = fetchgit {
     url = "https://github.com/nxp-imx/uboot-imx.git";
     # tag: lf-6.12.20-2.0.0
     rev = "9383f8387dc76524524da69992db96c22195a57c";
-    sha256 = "";
+    sha256 = "sha256-httRSwN8NiKOdL7fZEvN/4AbypGQfegYtJgxKIea+Zg=";
   };
 in
 (stdenv.mkDerivation {
@@ -41,6 +42,7 @@ in
     gnutls
     openssl
     perl
+    efitools
   ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];

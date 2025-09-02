@@ -3,7 +3,7 @@ with pkgs;
 buildLinux (
   args
   // rec {
-    version = "6.12.20-2.0.0";
+    version = "6.12.20";
     name = "imx8mp-linux";
 
     # modDirVersion needs to be x.y.z, will automatically add .0 if needed
