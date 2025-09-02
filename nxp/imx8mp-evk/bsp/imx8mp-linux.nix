@@ -49,7 +49,7 @@ buildLinux (
       repo = "linux-imx";
       # tag: lf-6.12.20-2.0.0
       rev = "dfaf2136deb2af2e60b994421281ba42f1c087e0";
-      sha256 = "";
+      sha256 = "sha256-ITrmj3a5YfXh/PSRTi+Rlto5uEBIAWFWtkTsO1ATXIo=";
     };
   }
   // (args.argsOverride or { })
